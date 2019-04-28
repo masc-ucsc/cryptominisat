@@ -26,6 +26,9 @@ THE SOFTWARE.
 #include "bosphorus/bosphorus.hpp"
 #include "cryptominisat5/solvertypesmini.h"
 
+using Bosph::Solution;
+using Bosph::Bosphorus;
+
 namespace CMSat {
 
 class Solver;

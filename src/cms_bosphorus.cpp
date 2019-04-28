@@ -24,6 +24,8 @@ THE SOFTWARE.
 #include "solver.h"
 
 using namespace CMSat;
+using Bosph::Solution;
+using Bosph::Bosphorus;
 
 CMSBosph::CMSBosph(Solver* _solver):
     solver(_solver)
