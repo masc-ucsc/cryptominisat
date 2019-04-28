@@ -47,6 +47,7 @@ private:
     add_cl_ret add_this_clause(const T& cl, vector<int>& cl2);
 
     Solver* solver;
+    ANF* anf;
     Bosph::Bosphorus bosp;
 };
 

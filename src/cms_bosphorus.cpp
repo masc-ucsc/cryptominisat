@@ -82,6 +82,42 @@ lbool CMSBosph::run()
     if (!ret) {
         return l_Undef;
     }
+    Bosph::Bosphorus::print_stats(anf);
+
+    double myTime = cpuTime();
+    if (solver->conf.verbosity) {
+        cout << "c [ANF hash] Calculating ANF hash..." << endl;
+    }
+
+    auto orig_anf = Bosph::Bosphorus::copy_anf_no_replacer(anf);
+    if (solver->conf.verbosity) {
+        cout << "c [ANF hash] Done. T: " << (cpuTime() - myTime) << endl;
+    }
+    Solution solution = bosp.simplify(anf, NULL);
+    assert(solution.ret == Bosph::l_Undef);
+
+    /*if (solver->conf.printProcessedANF) {
+        Bosphorus::print_anf(anf);
+    }*/
+
+    if (solver->conf.verbosity >= 1) {
+        Bosphorus::print_stats(anf);
+    }
+    bosp.add_trivial_learnt_from_anf_to_learnt(anf, orig_anf);
+    Bosphorus::delete_anf(orig_anf);
+
+    // remove duplicates from learnt clauses
+    bosp.deduplicate();
+
+    cout << "Extra learnt: " << endl;
+    vector<Bosph::Clause> cls = bosp.get_learnt(anf);
+    for(auto cl: cls) {
+        for(auto l: cl.getLits()) {
+            cout << l << " ";
+        }
+        cout << endl;
+    }
+    exit(-1);
 
     return l_Undef;
 }
@@ -89,7 +125,7 @@ lbool CMSBosph::run()
 
 bool CMSBosph::init()
 {
-    ANF* anf = bosp.start_cnf_input(solver->nVars());
+    anf = bosp.start_cnf_input(solver->nVars());
 
     //where all clauses' literals are
     vector<Lit> bin_cl;
