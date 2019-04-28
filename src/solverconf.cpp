@@ -207,6 +207,7 @@ DLL_PUBLIC SolverConf::SolverConf() :
         //validated with run 8114195.wlm01
         , simplify_schedule_nonstartup(
             "handle-comps,"
+            "bosphorus,"
             "scc-vrepl, cache-clean, cache-tryboth,"
             "sub-impl, intree-probe, probe,"
             "sub-str-cls-with-bin, distill-cls,"
@@ -220,6 +221,7 @@ DLL_PUBLIC SolverConf::SolverConf() :
         )
         , simplify_schedule_preproc(
             "handle-comps,"
+            "bosphorus,"
             "scc-vrepl, cache-clean, cache-tryboth,"
             "sub-impl,"
             "sub-str-cls-with-bin, distill-cls, scc-vrepl, sub-impl,"
@@ -241,6 +243,9 @@ DLL_PUBLIC SolverConf::SolverConf() :
         , maxOccurRedMB    (600)
         , maxOccurRedLitLinkedM(50)
         , subsume_gothrough_multip(2.0)
+
+        //Bosphorus
+        , doBosphorus(1)
 
         //WalkSAT
         , doSLS(true)

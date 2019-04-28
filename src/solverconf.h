@@ -332,6 +332,9 @@ class DLL_PUBLIC SolverConf
         double maxOccurRedLitLinkedM;
         double   subsume_gothrough_multip;
 
+        //Bosphorus
+        int doBosphorus;
+
         //Walksat
         int doSLS;
         uint32_t sls_every_n;

@@ -66,6 +66,9 @@ THE SOFTWARE.
 #include "drat.h"
 #include "xorfinder.h"
 #include "sls.h"
+#ifdef USE_BOSPHORUS
+#include "cms_bosphorus.h"
+#endif
 
 using namespace CMSat;
 using std::cout;
@@ -1917,6 +1920,17 @@ lbool Solver::execute_inprocess_strategy(
                     return l_True;
                 }
             }
+        } else if (token == "bosphorus") {
+#ifdef USE_BOSPHORUS
+            if (conf.doBosphorus) {
+                CMSBosph bosp(this);
+                bosp.run();
+            }
+#else
+            if (solver->conf.verbosity) {
+                cout << "c [bosphorus] Not compiled with Bosphorus, not running" << endl;
+            }
+#endif
         } else if (token == "intree-probe") {
             if (conf.doIntreeProbe) {
                 intree->intree_probe();

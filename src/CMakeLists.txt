@@ -127,6 +127,13 @@ if (USE_GAUSS)
     )
 endif()
 
+if (USING_BOSPHORUS)
+    include_directories(${BOSPHORUS_INCLUDE_DIRS})
+
+    SET(cryptoms_lib_files ${cryptoms_lib_files} cms_bosphorus)
+    SET(cryptoms_lib_link_libs ${cryptoms_lib_link_libs} ${BOSPHORUS_LIBRARIES})
+endif (USING_BOSPHORUS)
+
 if (M4RI_FOUND)
     include_directories(${M4RI_INCLUDE_DIRS})
 

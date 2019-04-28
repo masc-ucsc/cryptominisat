@@ -558,9 +558,14 @@ if (NOT NOBOSPHORUS)
             message(WARNING "Bosphorus NOT found")
         endif()
     else()
+        include_directories(${BOSPHORUS_INCLUDE_DIRS})
+        add_definitions( -DUSE_BOSPHORUS )
+        set(USING_BOSPHORUS ON)
+
         message(STATUS "Bosphorus -- found version ${BOSPHORUS_VERSION_MAJOR}.${BOSPHORUS_VERSION_MINOR}")
         message(STATUS "Bosphorus -- libraries: ${BOSPHORUS_LIBRARIES}")
         message(STATUS "Bosphorus -- include dirs: ${BOSPHORUS_INCLUDE_DIRS}")
+
     endif()
 endif()
 

@@ -30,7 +30,7 @@ THE SOFTWARE.
 
 namespace CMSat {
 
-#define var_Undef (0xffffffffU >> 4)
+static const uint32_t var_Undef = 0xffffffffU >> 4;
 
 class TooManyVarsError {};
 class TooLongClauseError {};
@@ -116,11 +116,6 @@ inline std::ostream& operator<<(std::ostream& co, const std::vector<Lit>& lits)
     return co;
 }
 
-#define l_True  lbool((uint8_t)0) // gcc does not do constant propagation if these are real constants.
-#define l_False lbool((uint8_t)1)
-#define l_Undef lbool((uint8_t)2)
-
-
 class llbool;
 
 class lbool {
@@ -169,6 +164,10 @@ inline lbool boolToLBool(const bool b)
     else
         return l_False;
 }
+
+static const lbool l_True  = lbool((uint8_t)0); // gcc does not do constant propagation if these are real constants.
+static const lbool l_False = lbool((uint8_t)1);
+static const lbool l_Undef = lbool((uint8_t)2);
 
 
 /**
