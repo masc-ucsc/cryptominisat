@@ -705,7 +705,7 @@ endif()
 # -----------------------------------------------------------------------------
 set(CRYPTOMINISAT5_EXPORT_NAME "cryptominisat5Targets")
 
-add_subdirectory(src cmsat5-src)
+add_subdirectory(cryptominisat5 cmsat5-src)
 
 # -----------------------------------------------------------------------------
 # Add uninstall target for makefiles
