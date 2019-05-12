@@ -7,7 +7,7 @@ cc_library(
    hdrs = glob(["cryptominisat5/*.h","include/**/*.h"])
    ,
    linkopts = ["-lpthread"],
-   includes = ["src","include","genfiles"],
+   includes = ["cryptominisat5","genfiles","."],
    visibility = ["//visibility:public"],
    defines = ["USE_GAUSS"],
 )
