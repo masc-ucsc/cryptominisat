@@ -1,0 +1,12 @@
+
+This is the cryptominisat fork for lgraph. Mostly to handle bazel
+
+Steps to sync repor with latest cryptominisat:
+
+    git remote -v
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git push origin master
+
+
