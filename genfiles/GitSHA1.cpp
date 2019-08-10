@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 const char* CMSat::get_version_sha1()
 {
-    static const char myversion_sha1[] = "f5609bfda3edbe373999fa5f79bc153ee619a7ca";
+    static const char myversion_sha1[] = "b5b8b28ce6cfc339ee619481aba41d16ad81fe26";
     return myversion_sha1;
 }
 
@@ -42,7 +42,7 @@ const char* CMSat::get_compilation_env()
     "COMPILE_DEFINES =  -DUSE_GAUSS -DBOOST_TEST_DYN_LINK -DUSE_ZLIB -DYALSAT_FPU | "
     "STATICCOMPILE = OFF | "
     "ONLY_SIMPLE = OFF | "
-    "Boost_FOUND = 1 | "
+    "Boost_FOUND = TRUE | "
     "STATS = OFF | "
     "SQLITE3_FOUND =  | "
     "ZLIB_FOUND = TRUE | "

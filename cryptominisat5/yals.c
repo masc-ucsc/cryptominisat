@@ -672,7 +672,7 @@ void * yals_realloc (Yals * yals, void * ptr, size_t o, size_t n) {
   if (!n) { yals_free (yals, ptr, o); return 0; }
   if (!o) return yals_malloc (yals, n);
   yals_dec_allocated (yals, o);
-  res = (Yals *)yals->mem.realloc (yals->mem.mgr, ptr, o, n);
+  res = yals->mem.realloc (yals->mem.mgr, ptr, o, n);
   if (n && !res) yals_abort (yals, "out of memory in 'yals_realloc'");
   yals_inc_allocated (yals, n);
   if (n > o) memset (res + o, 0, n - o);
@@ -687,7 +687,7 @@ size_t yals_max_allocated (Yals * yals) {
 
 static char * yals_strdup (Yals * yals, const char * str) {
   assert (str);
-  return strcpy ((char *)yals_malloc (yals, strlen (str) + 1), str);
+  return strcpy (yals_malloc (yals, strlen (str) + 1), str);
 }
 
 static void yals_strdel (Yals * yals, char * str) {
@@ -1178,10 +1178,10 @@ static int yals_pick_literal (Yals * yals, int cidx) {
     LOG ("literal %d weighted break %u", lit, w);
     if (pick_break_zero && !w) {
       if (!zero++) CLEAR (yals->cands);
-      PUSH ((int *)yals->cands, lit);
+      PUSH (yals->cands, lit);
     } else if (!zero) {
-      PUSH ((int *)yals->breaks, w);
-      PUSH ((int *)yals->cands, lit);
+      PUSH (yals->breaks, w);
+      PUSH (yals->cands, lit);
     }
   }
 
