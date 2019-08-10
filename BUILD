@@ -9,6 +9,6 @@ cc_library(
    linkopts = ["-lpthread"],
    includes = ["cryptominisat5"],
    visibility = ["//visibility:public"],
-   defines = ["USE_GAUSS","USE_ZLIB","YALSAT_FPU","cryptominisat5_EXPORTS"],
+   defines = ["USE_GAUSS","USE_ZLIB","cryptominisat5_EXPORTS"],
 )
 
